@@ -39,8 +39,8 @@ static const int showstatus         = 1;        /* 0 means no status bar */
 static const int showfloating       = 0;        /* 0 means no floating indicator */
 static int topbar                   = 1;        /* 0 means bottom bar */
 
-static char dmenufont[]             = "monospace:size=10";
-static const char *fonts[]          = { "monospace:size=10", "Hack Nerd Font Mono:size=16", "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true"  };
+static char dmenufont[]             = "JetbrainsMono Nerd Font:size=10";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font","monospace:size=10", "Hack Nerd Font Mono:size=16", "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true"  };
 
 /* default colors used if xrdb is not loaded */
 static char normbgcolor[]           = "#2e3440";
@@ -122,7 +122,7 @@ static const Layout layouts[] = { /* alt glyphs: 󱡗 󱏋 */
 #define GTKCMD(cmd) { .v = (const char*[]){ "/usr/bin/gtk-launch", cmd, NULL } }
 
 #define STATUSBAR "dwmblocks"
-#define BROWSER "qutebrowser"
+#define BROWSER "brave"
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -230,7 +230,7 @@ static const Key keys[] = {
 /* application bindings */
 	{ MODKEY,			XK_m,          spawn,      {.v = (const char*[]){ "st", "-e", "termusic", NULL } } },
 	{ MODKEY,			XK_w,          spawn,      {.v = (const char*[]){ BROWSER, NULL } } },
-	{ MODKEY,			XK_f,          spawn,      {.v = (const char*[]){ "st", "-e", "fff", NULL } } },
+	{ MODKEY,			XK_s,          spawn,      {.v = (const char*[]){ "st", "-e", "fff", NULL } } },
 	{ MODKEY,			XK_n,          spawn,      {.v = (const char*[]){ "st", "-e", "nvim", NULL } } },
 	{ MODKEY|ShiftMask,	XK_h,          spawn,      {.v = (const char*[]){ "st", "-e", "htop", NULL } } },
 	{ MODKEY,			XK_p,          spawn,      {.v = (const char*[]){ "darktable", NULL } } },
@@ -240,12 +240,9 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_n,      spawn,       {.v = (const char*[]){ "dmenunotes", NULL } } },
 	{ MODKEY,				XK_v,      spawn,       {.v = (const char*[]){ "cliphist", "sel", NULL } } },
 	{ MODKEY,				XK_c,      spawn,       {.v = (const char*[]){ "cliphist", "add", NULL } } },
-	{ MODKEY|ShiftMask,		XK_a,      spawn,       {.v = (const char*[]){ "dmenuvids", NULL } } },
-	{ MODKEY|ControlMask,	XK_a,      spawn,       {.v = (const char*[]){ "dmenuaudioswitch", NULL } } },
 	{ MODKEY|ShiftMask,		XK_d,      spawn,       {.v = (const char*[]){ "rip", NULL } } },
 	{ MODKEY,				XK_r,      spawn,       {.v = (const char*[]){ "rec", NULL } } },
 	{ MODKEY|ShiftMask,		XK_grave,  spawn,       {.v = (const char*[]){ "define", NULL } } },
-	{ MODKEY|ShiftMask,		XK_w,      spawn,       {.v = (const char*[]){ "wallpapermenu", NULL } } },
 	{ MODKEY,				XK_F1,     spawn,       SHCMD("screenshot") },
 	{ MODKEY|ShiftMask,		XK_F1,     spawn,       SHCMD("screenshot color") },
 	{ MODKEY,				XK_F2,     spawn,       {.v = (const char*[]){ "vb", NULL } } },
@@ -254,14 +251,6 @@ static const Key keys[] = {
 
 
 /* other bindings */
-	{ MODKEY,				XK_F12,    spawn,       SHCMD("playerctl -p termusic next") },
-	{ MODKEY,				XK_F11,    spawn,       SHCMD("playerctl -p termusic play-pause") },
-	{ MODKEY|ShiftMask,		XK_F11,    spawn,       SHCMD("playerctl play-pause") },
-	{ MODKEY,				XK_F10,    spawn,       SHCMD("playerctl -p termusic previous") },
-	{ MODKEY|ShiftMask,		XK_F8,     spawn,       SHCMD("slock systemctl suspend -i") },
-	{ MODKEY,				XK_F8,     spawn,       SHCMD("slock") },
-	{ MODKEY,				XK_F7,     spawn,       SHCMD("status-timer") },
-	{ MODKEY|ShiftMask,		XK_F7,     spawn,       SHCMD("status-timer cleanup") },
 	{ MODKEY,				XK_F6,     spawn,       SHCMD("amixer -D pulse sset Master 5%+") },
 	{ MODKEY,				XK_F5,     spawn,       SHCMD("amixer -D pulse sset Master 5%-") },
 };
